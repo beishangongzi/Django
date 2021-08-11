@@ -5,6 +5,17 @@
 {% endblock %}
 {% block content %}
 {% for post in posts %}
-    <p><a href="/post/{{ post.slug }}">{{ post.title }}</a></p>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p><a href="/post/{{ post.slug }}">{{ post.title }}</a></p>
+        </div>
+        <div class="panel-body">
+            <p>{{ post.body | truncatechars:40 }}</p>
+        </div>
+        <div class="panel-footer" style="background-color: #efefef">
+            <p>publish date: {{ post.pub_date | date:"Y M d, h:m:s" }}</p>
+        </div>
+    </div>
+
 {% endfor %}
 {% endblock %}

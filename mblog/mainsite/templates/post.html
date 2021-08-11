@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load markdown_deux_tags %}
 {% block title %}
 Welcome
 {% endblock %}
@@ -11,7 +12,7 @@ Welcome
 {% endblock %}
 
 {% block content %}
-<p>{{ post.body }}</p>
+<p>{{ post.body|markdown}}</p>
 {% endblock %}
 
 
