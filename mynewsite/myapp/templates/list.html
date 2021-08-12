@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>phone list</title>
+</head>
+<body>
+<h2>the phone list in my store</h2>
+<hr>
+<table width=400 border=1 bgcolor="aqua">
+    <thead><tr>
+        <td>name</td>
+        <td>price</td>
+        <td>count</td>
+    </tr></thead>
+    {% for p in products %}
+        <tbody><tr>
+            <td><a href="/list/{{p.sku}}">{{p.name}}</a> </td>
+            <td>{{p.price}}</td>
+            <td>{{p.qty}}</td>
+        </tr></tbody>
+    {% endfor %}}
+</table>
+<hr>
+<a href="/">homepage</a>
+
+</body>
+</html>
