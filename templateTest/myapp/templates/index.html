@@ -1,38 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-        <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-</head>
-<body>
-<div>
-
-</div>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-<!--            <a class="navbar-brand" href="#">now live {{tv.name}}</a>-->
-
-            <img style="width: 100px; height: 100px" src="{% static 'images/Logo.png' %}">
-            {{tv.name}}
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="activate"><a href="/">Home</a> </li>
-            <li><a href="{% url 'tv-url' 0 %}">CCTV NEWS</a></li>
-            <li><a href="{% url 'tv-url' 1 %}">CCTV INTERNET</a></li>
-        </ul>
-    </div>
-</nav>
+{% extends "base.html" %}
+{% block title %}TV LIVE{% endblock %}
+{% block tvname %} {{tv.name}} {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li class="activate"><a href="/">Home</a> </li>
+    <li><a href="{% url 'tv-url' 0 %}">CCTV NEWS</a></li>
+    <li><a href="{% url 'tv-url' 1 %}">CCTV INTERNET</a></li>
+</ul>
+{% endblock %}
+{% block content %}
 <div class="container">
     <div id="tvcode" align="center">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/{{tv.tvcode}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -41,11 +17,4 @@
         <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1827600686&auto=1&height=66"></iframe>
     </div>
 </div>
-<div class="panel pannel-default">
-    <div class="panel-footer">{{now}}</div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" >
-
-</script>
-</body>
-</html>
+{% endblock %}

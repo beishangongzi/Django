@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}English News{% endblock %}
+{% block tvname %} {{ tv.name }} {% endblock %}
+{% block menu %}
+	<ul class='nav navbar-nav'>
+		<li class='activate'><a href='/'>Home</a></li>
+		<li><a href="{% url 'engtv-url' 0 %}">Sky News</a></li>
+		<li><a href="{% url 'engtv-url' 0 %}">Sky News</a></li>
+		<li><a href="{% url 'engtv-url' 0 %}">Sky News</a></li>
+		<li><a href="{% url 'engtv-url' 0 %}">Sky News</a></li>
+	</ul>
+{% endblock %}
+
+{% block content %}
+
+{% if hour > 11 %}
+<h2>goog night</h2>
+{% elif hour < 10 %}
+<h2 align="center">good morning</h2>
+{% endif %}
+<br>
+<hr>
+	<div class='container'>
+		<div id='tvcode' align='center'>
+		<iframe frmeborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1868486667&auto=1&height=66"></iframe>
+		</div>
+	</div>
+{% endblock %}
