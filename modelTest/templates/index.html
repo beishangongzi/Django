@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}DJ phone{% endblock %}
+{% block content %}
+<div class='container' align=center >
+	{% for p in products %}
+	{% if forloop.first %}
+	<table border="1">
+		<tr>
+			<td>phone</td>
+			<td>type</td>
+			<td>year</td>
+			<td>price</td>
+		</tr>
+	{% endif %}
+		<tr>
+			<td>{{ p.nickname }}</td>
+			<td>{{ p.pmodel.maker.name }}</td>
+			<td>{{ p.year }}</td>
+			<td>{{ p.price }}</td>
+		</tr>
+	{% if forloop.last %}
+	</table>
+	{% endif %}
+	{% empty %}
+	<h3> no phone </h3>
+	
+	{% endfor %}
+
+</div>
+
+{% endblock %}
