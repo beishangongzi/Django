@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}DJ phone{% endblock %}
+{% block content %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+	<form name="my_form" action="/mysite/" method="GET">
+		<label for="byear">borth year</label>
+		<select name="byear" id="byear">
+			{% for year in years %}
+			<option value="{{year}}">{{year}}</option>
+			{% endfor %}
+		</select><br>
+		<label for="user_id">Your ID:</label>
+		<input id="user_id" type="text" name="user_id">
+		<label for="user_pass">Your password:</label>
+		<input id="user_pass" type="password" name="user_pass">
+		<input type="checkbox" name="fcolor" value="red">red
+		<input type="checkbox" name="fcolor" value="blue">blue
+		<input type="checkbox" name="fcolor" value="yellow">Yellow
+		<input type="checkbox" name="fcolor" value="Orange">orange</br>
+		<input type="submit" value="login">
+		<input type="reset" value="reset">
+	</form>
+	<hr>
+	Your ID: {{urid|default:'not None'}}</br>
+	{% if verified %}
+	<em>Pass</em>
+	{% else %}
+	<em>Banned</em>
+	{% endif %}
+</div>
+{% endblock %}
