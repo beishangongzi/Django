@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}I have something to say.{% endblock %}
+{% block content %}
+    <form name="my-form" action="/mysite/" method="GET">
+        {% for mood in moods %}
+            <input type="radio" name="mood" value="{{ mood.status }}">{{ mood.status }}
+        {% endfor %}
+    <br/>
+    mood pannel:<br/>
+        <label>
+            <textarea name="userPost" rows=3 cols=70></textarea>
+        </label>
+        <br/>
+    <label for="userId">you nickName</label>
+    <input id="userId" type="text" name="userId">
+    <label for="userPass">the password</label>
+    <input id="userPass" type="password" name="userPass">
+    <input type="submit" value="stick">
+    <input type="submit" value="reset">
+    </form>
+{% endblock %}
