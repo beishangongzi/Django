@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'ch08www',
         'USER': 'andy',
         'PASSWORD': 'andy123',
-        'HOST': '10.214.3.168',
+        'HOST': '139.159.252.137',
     }
 }
 

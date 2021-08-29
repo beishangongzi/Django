@@ -1,21 +1,55 @@
 {% extends 'base.html' %}
 {% block title %}I have something to say.{% endblock %}
 {% block content %}
-    <form name="my-form" action="/mysite/" method="GET">
-        {% for mood in moods %}
-            <input type="radio" name="mood" value="{{ mood.status }}">{{ mood.status }}
-        {% endfor %}
-    <br/>
-    mood pannel:<br/>
-        <label>
-            <textarea name="userPost" rows=3 cols=70></textarea>
-        </label>
+    <div class="content" style="margin-left: 20px; margin-right: 20px">
+    <br>
+        <form name="my-form" action="/mysite/" method="GET">
+            {% for mood in moods %}
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="mood" value="{{ mood.status }}">
+                  <label class="form-check-label" for="inlineCheckbox1">{{ mood.status }}</label>
+                </div>
+            {% endfor %}
         <br/>
-    <label for="userId">you nickName</label>
-    <input id="userId" type="text" name="userId">
-    <label for="userPass">the password</label>
-    <input id="userPass" type="password" name="userPass">
-    <input type="submit" value="stick">
-    <input type="submit" value="reset">
-    </form>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Mood Panel</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" name="userPost" rows="3"></textarea>
+        </div>
+        <label for="userId">you nickName</label>
+        <input id="userId" type="text" name="userId">
+        <label for="userPass">the password</label>
+        <input id="userPass" type="password" name="userPass">
+        <input type="submit" value="stick">
+        <input type="submit" value="reset">
+        </form>
+        <br>
+        <div>
+            <p>I have something to say</p>
+        </div>
+
+        <div class="row" style="margin-left: 12px">
+        {% for post in posts %}
+            <div class="col-sm-9 col-md-3">
+            <div class="card" style="margin-bottom: 10px">
+                <div class="card-header">
+                    <span style="color: #b02a37">{{ post.nickName }}</span> feel: {{ post.mood }}
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>{{ post.message | linebreaks }}</p>
+    {#                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>#}
+                        </blockquote>
+                    </div>
+                    <div class="card-footer">
+                        <blockquote class="blockquote mb-0">
+                            <i><small style="right: auto">{{ post.pubDate }}</small></i>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        </div>
+    </div>
+
 {% endblock %}
