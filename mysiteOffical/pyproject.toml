@@ -6,6 +6,8 @@ authors = ["andy <zhangruibin021@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+django = '^3.2'
+pymysql = '*'
 
 [tool.poetry.dev-dependencies]
 

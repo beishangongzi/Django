@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}I have something to say.{% endblock %}
+{% block js %}
+function go_delete(id){
+    var userPass = document.getElementById(id).value;
+    if(userPass != ""){
+        var usr =  id;
+        window.location = usr;
+    }
+}
+{% endblock %}
 {% block content %}
     <div class="content" style="margin-left: 20px; margin-right: 20px">
     <br>
@@ -20,8 +29,9 @@
         <label for="userPass">the password</label>
         <input id="userPass" type="password" name="userPass">
         <input type="submit" value="stick">
-        <input type="submit" value="reset">
+        <input type="reset" value="reset">
         </form>
+        <p>{{ message }}</p>
         <br>
         <div>
             <p>I have something to say</p>
@@ -29,7 +39,7 @@
 
         <div class="row" style="margin-left: 12px">
         {% for post in posts %}
-            <div class="col-sm-9 col-md-3">
+            <div class="col-sm-9 col-md-3" id="{{ post.id }}">
             <div class="card" style="margin-bottom: 10px">
                 <div class="card-header">
                     <span style="color: #b02a37">{{ post.nickName }}</span> feel: {{ post.mood }}
@@ -43,6 +53,8 @@
                     <div class="card-footer">
                         <blockquote class="blockquote mb-0">
                             <i><small style="right: auto">{{ post.pubDate }}</small></i>
+                             <button type="button" class="btn-close" aria-label="Close" style="position: absolute; right: 0px" onclick="go_delete({{ post.id }})"></button>
+
                         </blockquote>
                     </div>
                 </div>
