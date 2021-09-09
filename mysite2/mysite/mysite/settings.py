@@ -126,3 +126,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/blog/'
 LOGIN_URL = "/account/login/"
+
+# Email settings
+EMAIL_HOST = 'smtp.126.com'
+EMAIL_HOST_USER = 'andyelizabeth021@126.com'
+EMAIL_HOST_PASSWORD = 'OQONHJDDFBCEEBAS' #past the key or password app here
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'andyelizabeth021@126.com'
