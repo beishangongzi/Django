@@ -134,3 +134,4 @@ EMAIL_HOST_PASSWORD = 'OQONHJDDFBCEEBAS' #past the key or password app here
 EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'andyelizabeth021@126.com'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
