@@ -82,11 +82,12 @@ def myself_edit(request):
             request.user.save()
             userprofile.save()
             userinfo.save()
-    #
-    #
+        #
+        #
         return HttpResponseRedirect('/account/my-information/')
     else:
         user_form = UserForm(instance=request.user)
+        # user_form = UserForm(initial={"username": request.user.username})
         userprofile_form = UserProfileForm(initial={"birth": userprofile.birth,
                                                     "phone": userprofile.phone})
         userinfo_form = UserInfoForm(initial={"school": userinfo.school,
@@ -99,6 +100,7 @@ def myself_edit(request):
                        "userprofile_form": userprofile_form,
                        "userinfo_form": userinfo_form})
 
+
 def getInfos(request):
     userprofile = UserProfile.objects.get(user=request.user) if hasattr(request.user,
                                                                         'userprofile') else UserProfile.objects.create(
@@ -107,3 +109,19 @@ def getInfos(request):
                                                                   'userinfo') else UserInfo.objects.create(
         user=request.user)
     return userinfo, userprofile
+
+
+@login_required(login_url='/account/login')
+def my_image(request):
+    # return render(request, 'account/imagecrop.html',)
+    if request.method == "POST":
+        img = request.POST['img']
+        print(request.POST)
+        userinfo = UserInfo.objects.get(user=request.user.id)
+        userinfo.photo = img
+        userinfo.save()
+        print("save....")
+        return HttpResponse("1")
+    else:
+        print("sss")
+        return render(request, 'account/imagecrop.html')
