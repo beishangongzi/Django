@@ -1,0 +1,20 @@
+{% load static %}
+<div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="https://www.baidu.com">
+                <img width="100px" src="{% static 'images/logo.png' %}">
+            </a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav" role="tablist">
+                <li><a href="{% url 'article:article_column' %}">manage</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
+                <li><a href="{% url 'blog:blog_title' %}">homepage</a> </li>
+                <li style="margin-top: 16px"><span >{{ user.username }}</span></li>
+                <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>

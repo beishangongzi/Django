@@ -1,0 +1,43 @@
+{% extends 'article/base.html' %}
+{% load static %}
+{% block title %}
+article column
+{% endblock %}
+
+{% block content %}
+<div>
+    <p class="text-right"><button class="btn btn-primary" onclick="add_column()">add column</button> </p>
+    <table class="table table-hover">
+        <tr>
+            <td>number</td>
+            <td>name</td>
+            <td>option</td>
+        </tr>
+        {% for column in columns %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ column.column }}</td>
+                <td>--</td>
+            </tr>
+            {% empty %}
+            <p>not any a column, add it now.</p>
+        {% endfor %}
+
+    </table>
+</div>
+
+
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/layer.js' %}"></script>
+<script type="text/javascript">
+    function add_column() {
+        var index = layer.open({
+            type: 1,
+            skin: 'layui-layer-rim',
+            area: ["400px", "200px"],
+            title: "new column",
+            content: <div content=""
+        })
+    }
+</script>
+{% endblock %}
